@@ -41,30 +41,28 @@ namespace _2
 
             double x4 = Convert.ToDouble(X4.Text);
             double y4 = Convert.ToDouble(Y4.Text);
-            
-// Стороны
-            length[0] = Math.Sqrt( (x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1) );
-            length[1] = Math.Sqrt( (x4 - x3)*(x4 - x3) + (y4 - y3)*(y4 - y3) );
-            length[2] = Math.Sqrt( (x3 - x1)*(x3 - x1) + (y3 - y1)*(y3 - y1) );
-            length[3] = Math.Sqrt( (x4 - x2)*(x4 - x2) + (y4 - y2)*(y4 - y2) );
 
-            length[4] = Math.Sqrt((x4 - x1) * (x4 - x1) + (y4 - y1) * (y4 - y1));
-            length[5] = Math.Sqrt((x2 - x3) * (x2 - x3) + (y2 - y3) * (y2 - y3));
+         // Стороны
+         length[0] = Math.Round(Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)), 2);
+         length[1] = Math.Round(Math.Sqrt((x4 - x3) * (x4 - x3) + (y4 - y3) * (y4 - y3)), 2);
+         length[2] = Math.Round(Math.Sqrt((x3 - x1) * (x3 - x1) + (y3 - y1) * (y3 - y1)), 2);
+         length[3] = Math.Round(Math.Sqrt((x4 - x2) * (x4 - x2) + (y4 - y2) * (y4 - y2)), 2);
 
-            for (int i = 0; i < 6; i++)
-            {
-                if (length[i] == 0)
-                    label1.Text = Convert.ToString("Некорректные данные!");
-                return;
-            }
+         length[4] = Math.Round(Math.Sqrt((x4 - x1) * (x4 - x1) + (y4 - y1) * (y4 - y1)), 2);
+         length[5] = Math.Round(Math.Sqrt((x2 - x3) * (x2 - x3) + (y2 - y3) * (y2 - y3)), 2);
 
-            perimetr = length[0] + length[1] + length[2] + length[3];
+         for (int i = 0; i < 6; i++)
+            if (length[i] == 0)
+               label1.Text = Convert.ToString("Некорректные данные!");
+
+
+         perimetr = Math.Round(length[0] + length[1] + length[2] + length[3], 2);
 
 // Площадь для любого четырехугольника
-            S = (perimetr / 2 - length[0]) * (perimetr / 2 - length[1]) * (perimetr / 2 - length[2]) * (perimetr / 2 - length[3]);
+            S = Math.Round((perimetr / 2 - length[0]) * (perimetr / 2 - length[1]) * (perimetr / 2 - length[2]) * (perimetr / 2 - length[3]), 2);
 
-            label1.Text = Convert.ToString("Вывод:" + "\n1-ая сторона: " + length[0] + "       2-ая сторона: " + length[1] +
-                "\n3-ая сторона: " + length[2] + "       4-ая сторона: " + length[3]
+            label1.Text = Convert.ToString("Вывод:" + "\n1-ая сторона: " + length[0] + "      2-ая сторона: " + length[1] +
+                "\n3-ая сторона: " + length[2] + "      4-ая сторона: " + length[3]
                 + "\n\nПериметр: " + perimetr + "\nДиагонали: " + length[4] + " и " + length[5] + "\nПлощадь: " + S);
         }
 

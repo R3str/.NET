@@ -10,23 +10,16 @@ namespace ONPU.NET
     {
         static void Main(string[] args)
         {
-            string n;
+         int a;
 
-            Console.WriteLine("Введите целое число :");
-            n = Console.ReadLine();
+         Console.WriteLine("Введите целое число :");
 
-            bool check = int.TryParse(n, out int a);
+         while (!int.TryParse(Console.ReadLine(), out a))
+         {
+            Console.WriteLine("Некорректное значение! Попробуйте еще раз ");
+         }
 
-            if (check)
-            {
-                a = a * a;
-                Console.WriteLine("Результат: " + a);
-            }
-            else
-            {
-                Console.WriteLine("Вы ввели некорректные данные");
-            }
-
-        }
+         Console.WriteLine("Результат: " + Math.Pow(a, 2));
+      }
     }
 }
