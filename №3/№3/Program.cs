@@ -31,6 +31,30 @@ namespace _3
          arr[2, 2] = a8;
       }
 
+// Проверка на корректный ввод с выбором условий
+      static int Check(string s, string function)
+      {
+         int xy = 0;
+         if (function == "simple")
+         {
+            while (!int.TryParse(s, out xy))
+            {
+               Console.WriteLine("Некорректное значение! Попробуйте еще раз ");
+               s = Console.ReadLine();
+            }
+         }
+
+         if(function == "hard")
+         {
+            while (!int.TryParse(s, out xy) || Convert.ToInt32(s) < 1 || Convert.ToInt32(s) > 2)
+            {
+               Console.WriteLine("Некорректное значение! Попробуйте еще раз ");
+               s = Console.ReadLine();
+            }
+         }
+         return xy;
+      }
+
 // Вывод матрицы с проверкой на единичную матрицу
       public void Write()
       {
@@ -89,8 +113,8 @@ namespace _3
             case 2:
                {
                   int num;
-                  Console.WriteLine("От какой матрицы будете вычитывать?" + '\n' + "1 — от матрицы 'А'" + '\t' + "2 — от матрицы 'В'");
-                  num = int.Parse(Console.ReadLine());
+                  Console.WriteLine("От какой матрицы будете вычитывать?" + "\n\t1 — от матрицы 'А'" + "\n\t2 — от матрицы 'В'");
+                  num = Check(Console.ReadLine(), "hard");
 
                   switch (num)
                   {
@@ -139,15 +163,15 @@ namespace _3
             case 4:
                {
                   int num;
-                  Console.WriteLine("На какую матрицу будете умножать?" + '\n' + "1 — матрица 'А'" + '\t' + "2 — матрица 'В'");
-                  num = int.Parse(Console.ReadLine());
+                  Console.WriteLine("На какую матрицу будете умножать?" + "\n\t1 — матрица 'А'" + "\n\t2 — матрица 'В'");
+                  num = Check(Console.ReadLine(), "hard");
 
                   switch (num)
                   {
                      case 1:
                         {
                            Console.WriteLine("На какое число будете умножать?");
-                           num = int.Parse(Console.ReadLine());
+                           num = Check(Console.ReadLine(), "simple");
 
                            for (int i = 0; i < 3; i++)
                            {
@@ -163,7 +187,7 @@ namespace _3
                      case 2:
                         {
                            Console.WriteLine("На какое число будете умножать?");
-                           num = int.Parse(Console.ReadLine());
+                           num = Check(Console.ReadLine(), "simple");
 
                            for (int i = 0; i < 3; i++)
                            {
@@ -185,10 +209,22 @@ namespace _3
 
       public class Program
       {
-         static double[,] action = new double[3, 3];
-         static int numberAction;
+// Проверка на корректный ввод
+      static int Check(string s)
+      {
+         int xy;
+         while (!int.TryParse(s, out xy) || Convert.ToInt32(s) <= 0 || Convert.ToInt32(s) > 4)
+         {
+            Console.WriteLine("Некорректное значение! Попробуйте еще раз ");
+            s = Console.ReadLine();
+         }
+         return xy;
+      }
 
-         static void Main(string[] args)
+      static double[,] action = new double[3, 3];
+      static int numberAction;
+
+      static void Main(string[] args)
          {
             //Matrix A = new Matrix("Единичная матрица", 1, 1, 1, 1, 1, 1, 1, 1, 1); 
             Matrix A = new Matrix('A', 1, 2, 2, 0, 3, 1, 1, 0, 0);
@@ -197,9 +233,9 @@ namespace _3
             B.Write();
 // Алгебраические действия над матрицами
             Console.WriteLine("Что вы хотите сделать с этими матрицами?");
-            Console.WriteLine("1 — сумма" + '\t' + "2 — вычитание" + '\t' + "3 — умножение двух матриц" + '\t' + "4 — умножение матрицы на число");
+            Console.WriteLine("\t1 — сумма" + "\n\t2 — вычитание" + "\n\t3 — умножение двух матриц" + "\n\t4 — умножение матрицы на число");
 
-            numberAction = int.Parse(Console.ReadLine());
+            numberAction = Check(Console.ReadLine());
 
             A.Action(A, B, numberAction, action);
          }
