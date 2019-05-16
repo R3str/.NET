@@ -53,8 +53,10 @@ namespace _2
          for (int i = 0; i < 4; i++) 
          {
             if (length[i] == 0)
+            { 
                label13.Text += Convert.ToString("Некорректные данные! Одна из сторона равна нулю");
             goto link;
+            }
          }
 
 // Проверка на параллельность сторон и равность хотя бы одной пары сторон
@@ -62,23 +64,23 @@ namespace _2
             {
                 if (length[0] == length[1] && length[2] != length[3] && length[3] != length[0] && length[2] != length[0])
                 {
-                    label13.Text += Convert.ToString("Вывод: " + "\nТрапеция является равнобочной" + "\n\n1-ая сторона: " + length[0] + "       2-ая сторона: " + length[1] +
+                    label13.Text = Convert.ToString("Вывод: " + "\nТрапеция является равнобочной" + "\n\n1-ая сторона: " + length[0] + "       2-ая сторона: " + length[1] +
                                    "\n3-ая сторона: " + length[2] + "       4-ая сторона: " + length[3] + "\n");
                 }
                 else if (length[0] == length[2] && length[1] != length[3] && length[1] != length[0] && length[3] != length[0])
                 {
-                    label13.Text += Convert.ToString("Вывод: " + "\nТрапеция является равнобочной" + "\n\n1-ая сторона: " + length[0] + "       2-ая сторона: " + length[1] +
+                    label13.Text = Convert.ToString("Вывод: " + "\nТрапеция является равнобочной" + "\n\n1-ая сторона: " + length[0] + "       2-ая сторона: " + length[1] +
                                    "\n3-ая сторона: " + length[2] + "       4-ая сторона: " + length[3] + "\n");
                 }
                 else
                 {
-                    label13.Text += Convert.ToString("Вывод: " + "\nТрапеция не является равнобочной" + "\n\n1-ая сторона: " + length[0] + "       2-ая сторона: " + length[1] +
+                    label13.Text = Convert.ToString("Вывод: " + "\nТрапеция не является равнобочной" + "\n\n1-ая сторона: " + length[0] + "       2-ая сторона: " + length[1] +
                                    "\n3-ая сторона: " + length[2] + "       4-ая сторона: " + length[3] + "\n");
                 }
             }
             else
             {
-                label13.Text += Convert.ToString("Вывод: " + "\nФигура не выполняет условие паралельности сторон!");
+                label13.Text = Convert.ToString("Вывод: " + "\nФигура не выполняет условие паралельности сторон!");
             }
       link:;
         }

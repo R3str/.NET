@@ -23,7 +23,7 @@ namespace _2
          int xy;
          if (!int.TryParse(s, out xy) || Convert.ToInt32(s) <= 0)
          {
-            richTextBox1.Text = Convert.ToString("Некорректные данные в полях ввода! Автоматическая замена на значение '1'\n");
+            richTextBox1.Text += Convert.ToString("Некорректные данные в полях ввода! Автоматическая замена на значение '1'\n");
             xy = 1;
          }
          return xy;
@@ -44,16 +44,19 @@ namespace _2
          areaTrapezium[k] = Check(areaT.Text);
          for (int i = 0; i <= k; i++)
          {
-            if (nameQuadro[i] == nameQuadro[i + 1])
+            for (int j = i+1; j <= k; j++)
             {
-               richTextBox1.Text += "Такие имена уже были использованы вами! Автоматическая замена на значение '" + k + "'\n";
-               nameQuadro[i + 1] = Convert.ToString(k);
-            }
+               if (nameQuadro[i] == nameQuadro[j])
+               {
+                  richTextBox1.Text += "Такие имена уже были использованы вами! Автоматическая замена на значение '" + (k + 1) + "'\n";
+                  nameQuadro[j] = Convert.ToString(k + 1);
+               }
 
-            if (areaTrapezium[i] == areaTrapezium[i + 1])
-            {
-               richTextBox1.Text += "Такие имена уже были использованы вами! Автоматическая замена на значение '" + k + "'\n";
-               nameTrapezium[i + 1] = Convert.ToString(k);
+               if (nameTrapezium[i] == nameTrapezium[j])
+               {
+                  richTextBox1.Text += "Такие имена уже были использованы вами! Автоматическая замена на значение '" + (k + 1) + "'\n";
+                  nameTrapezium[j] = Convert.ToString(k + 1);
+               }
             }
          }
          richTextBox1.Text += "Четырехугольник: " + nameQuadro[k] + " — " + areaQuadro[k] + "\n" + "Трапеция: " + nameTrapezium[k] + " — " + areaTrapezium[k] + "\n\n";

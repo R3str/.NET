@@ -18,8 +18,9 @@ namespace _2
          int xy;
          if (!int.TryParse(s, out xy))
          {
-            label1.Text = Convert.ToString("Некорректные данные в полях ввода! Автоматическая замена на значение '0'\n");
+            label1.Text = "Некорректные данные в полях ввода!Автоматическая замена на значение '0'\n";
          }
+
          return xy;
       }
 
@@ -77,7 +78,7 @@ namespace _2
          // Площадь для любого четырехугольника
          S = Math.Round(Math.Sqrt((perimetr / 2 - length[0]) * (perimetr / 2 - length[1]) * (perimetr / 2 - length[2]) * (perimetr / 2 - length[3])), 2);
 
-         label1.Text += Convert.ToString("Вывод:" + "\n1-ая сторона: " + length[0] + "      2-ая сторона: " + length[1] +
+         label1.Text = Convert.ToString("Вывод:" + "\n1-ая сторона: " + length[0] + "      2-ая сторона: " + length[1] +
              "\n3-ая сторона: " + length[2] + "      4-ая сторона: " + length[3]
              + "\n\nПериметр: " + perimetr + "\nДиагонали: " + length[4] + " и " + length[5] + "\nПлощадь: " + S);
 

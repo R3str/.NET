@@ -70,11 +70,11 @@
          // 
          // button1
          // 
-         this.button1.Location = new System.Drawing.Point(175, 91);
+         this.button1.Location = new System.Drawing.Point(173, 91);
          this.button1.Name = "button1";
          this.button1.Size = new System.Drawing.Size(75, 23);
          this.button1.TabIndex = 8;
-         this.button1.Text = "Расчет";
+         this.button1.Text = "Расчитать";
          this.button1.UseVisualStyleBackColor = true;
          this.button1.Click += new System.EventHandler(this.button1_Click_1);
          // 
@@ -263,7 +263,7 @@
          this.Controls.Add(this.label1);
          this.Controls.Add(this.X1);
          this.Name = "fQuadrofigure";
-         this.Text = "fQuadrofigure";
+         this.Text = "Прямоугольник";
          this.Load += new System.EventHandler(this.fQuadrofigure_Load);
          this.ResumeLayout(false);
          this.PerformLayout();
