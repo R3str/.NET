@@ -88,12 +88,7 @@ namespace CourseWork
                if (delete)
                   Close();
 
-               if (delete)
-               {
-                  label2.Text = "Удалено!";
-               }
-
-               else if (arrAmount[i] != amount-1)
+               else if (arrAmount[i] != amount - 1)
                {
                   label2.Text = "В данном списке такого порядкового номера не существует!";
                }
@@ -124,7 +119,7 @@ namespace CourseWork
             if (delete)
                Close();
 
-            if (FFind.Mode == "delete")
+            else if (FFind.Mode == "delete")
             {
                FFind.Delete(arrAmount[0]);
                delete = true;

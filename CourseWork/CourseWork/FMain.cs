@@ -549,10 +549,12 @@ namespace CourseWork
          FFind find = new FFind("find");
 
          FPassword password = new FPassword();
-         password.ShowDialog();
-         if (FPassword.count == -1)
+
+         if(FPassword.count == 0)
+            password.ShowDialog();
+         if (FPassword.count < 0)
             Close();
-         else
+         else 
          {
             find.ShowDialog();
             Output(BoxOutput, user, amount, "Many", "0");
@@ -564,7 +566,9 @@ namespace CourseWork
          FFind find = new FFind("delete");
 
          FPassword password = new FPassword();
-         password.ShowDialog();
+
+         if(FPassword.count == 0)
+            password.ShowDialog();
          if (FPassword.count < 0)
             Close();
          else

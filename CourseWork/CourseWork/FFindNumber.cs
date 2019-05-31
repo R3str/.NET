@@ -60,9 +60,10 @@ namespace CourseWork
       {
          FFindChanche fFindChanche = new FFindChanche(number-1);
          if (delete)
-            Close();
+            this.Close();
+         
 
-         if (FFind.Mode == "delete")
+         else if (FFind.Mode == "delete")
          {
             FFind.Delete(--number);
             delete = true;

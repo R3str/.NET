@@ -87,7 +87,7 @@ namespace CourseWork
                if (delete)
                   Close();
 
-               if (arrAmount[i] != amount - 1)
+               else if (arrAmount[i] != amount - 1)
                {
                   label2.Text = "В данном списке такого порядкового номера не существует!";
                }
@@ -114,11 +114,13 @@ namespace CourseWork
          {
             if (delete)
                Close();
-
-            amount = arrAmount[0];
-            FFindChanche fFindChanche = new FFindChanche(amount);
-            fFindChanche.ShowDialog();
-            FMain.Output(BoxOutput, FMain.user, amount, "Telephone", FMain.user[amount].Street);
+            else
+            {
+               amount = arrAmount[0];
+               FFindChanche fFindChanche = new FFindChanche(amount);
+               fFindChanche.ShowDialog();
+               FMain.Output(BoxOutput, FMain.user, amount, "Telephone", FMain.user[amount].Street);
+            }
          }
       }
    }
