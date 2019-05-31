@@ -93,7 +93,7 @@ namespace _3
       }
 
 // Алгебраические действия над матрицами
-      public void Action(Matrix A, Matrix B, int numberAction, double[,] action)
+      public double[,] Action(Matrix A, Matrix B, int numberAction, double[,] action)
       {
          switch (numberAction)
          {
@@ -107,7 +107,7 @@ namespace _3
                      }
                   }
                   WriteA(action);
-                  break;
+                  return action;
                }
 
             case 2:
@@ -128,7 +128,7 @@ namespace _3
                               }
                            }
                            WriteA(action);
-                           break;
+                           return action;
                         }
 
                      case 2:
@@ -141,10 +141,10 @@ namespace _3
                               }
                            }
                            WriteA(action);
-                           break;
+                           return action;
                         }
                   }
-                  break;
+                  return action;
                }
 
             case 3:
@@ -157,7 +157,7 @@ namespace _3
                      }
                   }
                   WriteA(action);
-                  break;
+                  return action;
                }
 
             case 4:
@@ -181,7 +181,7 @@ namespace _3
                               }
                            }
                            WriteA(action);
-                           break;
+                           return action;
                         }
 
                      case 2:
@@ -197,10 +197,10 @@ namespace _3
                               }
                            }
                            WriteA(action);
-                           break;
+                           return action;
                         }
                   }
-                  break;
+                  return action;
                }
          }
       }
@@ -233,11 +233,16 @@ namespace _3
             B.Write();
 // Алгебраические действия над матрицами
             Console.WriteLine("Что вы хотите сделать с этими матрицами?");
-            Console.WriteLine("\t1 — сумма" + "\n\t2 — вычитание" + "\n\t3 — умножение двух матриц" + "\n\t4 — умножение матрицы на число");
+            Console.WriteLine("\t1 — сумма" + "\n\t2 — вычитание" + "\n\t3 — умножение двух матриц" + "\n\t4 — умножение матрицы на число" + "\n\t5 — Найти матрицу 'D'");
 
             numberAction = Check(Console.ReadLine());
 
             A.Action(A, B, numberAction, action);
+
+            double[,] a1, a2;
+
+         a1 = A.Action(A, B, 3, action);
+         a2 = A.Action(A, B, 2, action);
          }
 
       }
