@@ -203,6 +203,7 @@ namespace _3
                   return action;
                }
          }
+         return action;
       }
    }
 
@@ -233,16 +234,11 @@ namespace _3
             B.Write();
 // Алгебраические действия над матрицами
             Console.WriteLine("Что вы хотите сделать с этими матрицами?");
-            Console.WriteLine("\t1 — сумма" + "\n\t2 — вычитание" + "\n\t3 — умножение двух матриц" + "\n\t4 — умножение матрицы на число" + "\n\t5 — Найти матрицу 'D'");
+            Console.WriteLine("\t1 — сумма" + "\n\t2 — вычитание" + "\n\t3 — умножение двух матриц" + "\n\t4 — умножение матрицы на число");
 
             numberAction = Check(Console.ReadLine());
 
             A.Action(A, B, numberAction, action);
-
-            double[,] a1, a2;
-
-         a1 = A.Action(A, B, 3, action);
-         a2 = A.Action(A, B, 2, action);
          }
 
       }
