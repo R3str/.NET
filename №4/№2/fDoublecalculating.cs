@@ -181,7 +181,7 @@ namespace _2
             return;
          // получаем выбранный файл
          string filename = openFileDialog1.FileName;
-         MessageBox.Show("Файл открыт");
+         MessageBox.Show("Файл сохранен");
 //Сохранение файла
          FileStream fstream = new FileStream(filename, FileMode.Create);
          StreamWriter writer = new StreamWriter(fstream);
