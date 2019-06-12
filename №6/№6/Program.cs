@@ -61,13 +61,58 @@ namespace _6
          return tR;
       }*/
 
+      //main/////////////////////////////////////////////////////
+      /*Thread thread = new Thread(() => { Prnt(sizeX, sizeY); });
+      Thread thread2 = new Thread(() => { Prnt2(sizeX, sizeY); });
 
-            
+      thread.Start();
+      thread2.Start();*/
+      /*int[] heigh = new int[sizeY];
+      int[] width = new int[sizeX];
+      int x = 17;
+      int y = 15;
+      int xQ = 0;
+      int yQ = 0;
+      int xQ2 = sizeX;
+      int yQ2 = sizeY;
+      bool tR = false;
 
-   static void Main(string[] args)
+      Thread thread = new Thread(Prnt);
+      Thread thread2 = new Thread(Prnt2);
+
+      thread.Start();
+      thread2.Start();*/
+
+      /*for (int i = 0; i < sizeY - 1; i++)
       {
-         int sizeX = 5;
-         int sizeY = 5;
+         xQ = i;
+         xQ2 = sizeY - 1 - i;
+         for (int j = 0; j < sizeX - 1; j++)
+         {
+            yQ = j;
+            yQ2 = sizeX - 2 - j;
+            /*tR = Print(heigh, width, x, y, xQ, yQ, tR);
+            tR = Print2(heigh, width, x, y, xQ2, yQ2, tR);
+            if (tR)
+            {
+               goto link;
+            }
+            else
+               Thread.Sleep(10);
+            Console.Clear();
+         }
+      }
+   link:;
+      Console.WriteLine("Цель устранена!");*/
+
+      /// ////////////////////////////////////////////////////////////////////
+
+
+
+      static void Main(string[] args)
+      {
+         int sizeX = 10;
+         int sizeY = 10;
 
          int xQ = 4;
          int yQ = 4;
@@ -76,63 +121,21 @@ namespace _6
 
          int amount = 0;
 
-         /*Thread thread = new Thread(() => { amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount); });
+         Thread thread = new Thread(() => { amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount); });
 
-         thread.Start();*/
+         thread.Start();
 
          amount = Print(sizeX, sizeY, xQ, yQ, stop, amount);
-         amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount);
+         //amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount);
+
          Console.WriteLine(amount);
-
-         /*Thread thread = new Thread(() => { Prnt(sizeX, sizeY); });
-         Thread thread2 = new Thread(() => { Prnt2(sizeX, sizeY); });
-
-         thread.Start();
-         thread2.Start();*/
-         /*int[] heigh = new int[sizeY];
-         int[] width = new int[sizeX];
-         int x = 17;
-         int y = 15;
-         int xQ = 0;
-         int yQ = 0;
-         int xQ2 = sizeX;
-         int yQ2 = sizeY;
-         bool tR = false;
-
-         Thread thread = new Thread(Prnt);
-         Thread thread2 = new Thread(Prnt2);
-
-         thread.Start();
-         thread2.Start();*/
-
-            /*for (int i = 0; i < sizeY - 1; i++)
-            {
-               xQ = i;
-               xQ2 = sizeY - 1 - i;
-               for (int j = 0; j < sizeX - 1; j++)
-               {
-                  yQ = j;
-                  yQ2 = sizeX - 2 - j;
-                  /*tR = Print(heigh, width, x, y, xQ, yQ, tR);
-                  tR = Print2(heigh, width, x, y, xQ2, yQ2, tR);
-                  if (tR)
-                  {
-                     goto link;
-                  }
-                  else
-                     Thread.Sleep(10);
-                  Console.Clear();
-               }
-            }
-         link:;
-            Console.WriteLine("Цель устранена!");*/
       }
 
       static int Print(int sizeX, int sizeY, int xQ, int yQ, bool stop, int amount)
       {
          bool death = false;
 
-         for (int i = 0; i < sizeY; i++)
+         for (int i = 0; i < sizeY/2; i++)
          {
             for (int j = 0; j < sizeX; j++)
             {
@@ -168,13 +171,13 @@ namespace _6
       {
          bool death = false;
 
-         for (int i = sizeY - 1; i > -1; i--)
+         for (int i = sizeY - 1; i > sizeY/2-1; i--)
          {
-            for (int j = sizeX - 1; j > -1 ; j--)
+            for (int j = sizeX - 1; j > -1; j--)
             {
                Console.SetCursorPosition(j, i);
                Console.Write("X");
-               if (!death)
+               /*if (!death)
                {
                   Console.SetCursorPosition(xQ, yQ);
                   Console.Write("O");
@@ -183,7 +186,7 @@ namespace _6
                {
                   Console.SetCursorPosition(xQ, yQ);
                   Console.Write("0");
-               }
+               }*/
 
                if (j == xQ && i == yQ)
                {
