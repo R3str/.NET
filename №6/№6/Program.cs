@@ -66,21 +66,22 @@ namespace _6
 
    static void Main(string[] args)
       {
-         int sizeX = 3;
-         int sizeY = 3;
+         int sizeX = 5;
+         int sizeY = 5;
 
-         int xQ = 3;
-         int yQ = 0;
+         int xQ = 4;
+         int yQ = 4;
 
          bool stop = false;
 
          int amount = 0;
 
-         Thread thread = new Thread(() => { amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount); });
+         /*Thread thread = new Thread(() => { amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount); });
 
-         thread.Start();
+         thread.Start();*/
 
-         amount = Print(sizeX, sizeY, 2, 1, stop, amount);
+         amount = Print(sizeX, sizeY, xQ, yQ, stop, amount);
+         amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount);
          Console.WriteLine(amount);
 
          /*Thread thread = new Thread(() => { Prnt(sizeX, sizeY); });
@@ -131,9 +132,9 @@ namespace _6
       {
          bool death = false;
 
-         for (int i = 0; i < sizeY - 1; i++)
+         for (int i = 0; i < sizeY; i++)
          {
-            for (int j = 0; j < sizeX - 1; j++)
+            for (int j = 0; j < sizeX; j++)
             {
                Console.SetCursorPosition(j, i);
                Console.Write("X");
@@ -155,10 +156,11 @@ namespace _6
                   amount++;
                }
                else
-                  Thread.Sleep(1000);
+                  Thread.Sleep(100);
                Console.Clear();
             }
          }
+         /*Console.WriteLine(amount);*/
          return amount;
       }
 
@@ -166,9 +168,9 @@ namespace _6
       {
          bool death = false;
 
-         for (int i = sizeY; i > 0; i--)
+         for (int i = sizeY - 1; i > -1; i--)
          {
-            for (int j = sizeX; j > 0 ; j--)
+            for (int j = sizeX - 1; j > -1 ; j--)
             {
                Console.SetCursorPosition(j, i);
                Console.Write("X");
@@ -190,10 +192,11 @@ namespace _6
                   amount++;
                }
                else
-                  Thread.Sleep(1000);
+                  Thread.Sleep(100);
                Console.Clear();
             }
          }
+        /* Console.WriteLine(amount);*/
          return amount;
       }
    }
