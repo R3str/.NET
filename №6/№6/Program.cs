@@ -121,12 +121,13 @@ namespace _6
 
          int amount = 0;
 
-         Thread thread = new Thread(() => { amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount); });
+         //Thread thread = new Thread(() => { amount = Print(sizeX, sizeY, xQ, yQ, stop, amount); });
+         //Thread thread2 = new Thread(() => { amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount); });
+        //thread.Start();
+         //thread2.Start();
 
-         thread.Start();
-
+         amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount);
          amount = Print(sizeX, sizeY, xQ, yQ, stop, amount);
-         //amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount);
 
          Console.WriteLine(amount);
       }
