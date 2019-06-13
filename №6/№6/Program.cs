@@ -42,11 +42,6 @@ namespace _6
                Console.Write("O");
             }
          }
-
-         /*stop = Print(sizeX, sizeY, xQ, yQ, stop, amount);
-         stop2 = Print2(sizeX, sizeY, xQ, yQ, stop, amount);*/
-
-         Console.WriteLine(amount);
       }
 
       static void PrintMap(int sizeX, int sizeY)
@@ -99,11 +94,9 @@ namespace _6
                      amount++;
                   }
 
-                  Thread.Sleep(70);
+                  Thread.Sleep(110);
                   Console.SetCursorPosition(j, i);
                   Console.Write(" ");
-               
-               //Console.ReadKey();
             }
          }
       }
@@ -126,8 +119,6 @@ namespace _6
                   Thread.Sleep(150);
                   Console.SetCursorPosition(z, x);
                   Console.Write(" ");
-               
-               //Console.ReadKey();
             }
          }
          Console.Clear();
