@@ -9,199 +9,127 @@ namespace _6
 {
    class Program
    {
-      /*static bool Print(int[] heigh, int[] width, int x, int y, int xQ, int yQ, bool tR)
+   static void Main(string[] args)
       {
-         for (int i = 0; i < width.Length + 1; i++)
-            Console.Write("#");
-         Console.WriteLine();
+         Console.CursorVisible = false;
 
-         for (int i = 0; i < heigh.Length/2; i++)
-         {
-            for (int j = 0; j < width.Length; j++)
-            {
-               if (xQ == x && yQ == y)
-                  tR = true;
-               if (j == 0 || j == width.Length - 1)
-                  Console.Write("#");
-               if (j == x && i == y)
-                  Console.Write("0");
-               else if (i == xQ && j == yQ)
-                  Console.Write("X");
-               else
-               Console.Write(" ");
-            }
-            Console.WriteLine();
-         }
-         return tR;
-      }
+         int sizeX = 16;
+         int sizeY = 16;
 
-      static bool Print2(int[] heigh, int[] width, int x, int y, int xQ2, int yQ2, bool tR)
-      {
-         for (int i = heigh.Length / 2; i < heigh.Length; i++)
-         {
-            for (int j = 0; j < width.Length; j++)
-            {
-               if (xQ2 == y && yQ2 == x)
-                  tR = true;
-               if (j == 0 || j == width.Length - 1)
-                  Console.Write("#");
-               if (j == x && i == y)
-                  Console.Write("0");
-               else if (i == xQ2 && j == yQ2)
-                  Console.Write("X");
-               else
-                  Console.Write(" ");
-            }
-            Console.WriteLine();
-         }
-         
-         for (int i = 0; i < width.Length + 1; i++)
-            Console.Write('#');
-         Console.WriteLine();
-         return tR;
-      }*/
-
-      //main/////////////////////////////////////////////////////
-      /*Thread thread = new Thread(() => { Prnt(sizeX, sizeY); });
-      Thread thread2 = new Thread(() => { Prnt2(sizeX, sizeY); });
-
-      thread.Start();
-      thread2.Start();*/
-      /*int[] heigh = new int[sizeY];
-      int[] width = new int[sizeX];
-      int x = 17;
-      int y = 15;
-      int xQ = 0;
-      int yQ = 0;
-      int xQ2 = sizeX;
-      int yQ2 = sizeY;
-      bool tR = false;
-
-      Thread thread = new Thread(Prnt);
-      Thread thread2 = new Thread(Prnt2);
-
-      thread.Start();
-      thread2.Start();*/
-
-      /*for (int i = 0; i < sizeY - 1; i++)
-      {
-         xQ = i;
-         xQ2 = sizeY - 1 - i;
-         for (int j = 0; j < sizeX - 1; j++)
-         {
-            yQ = j;
-            yQ2 = sizeX - 2 - j;
-            /*tR = Print(heigh, width, x, y, xQ, yQ, tR);
-            tR = Print2(heigh, width, x, y, xQ2, yQ2, tR);
-            if (tR)
-            {
-               goto link;
-            }
-            else
-               Thread.Sleep(10);
-            Console.Clear();
-         }
-      }
-   link:;
-      Console.WriteLine("Цель устранена!");*/
-
-      /// ////////////////////////////////////////////////////////////////////
-
-
-
-      static void Main(string[] args)
-      {
-         int sizeX = 10;
-         int sizeY = 10;
+         int sizeX2 = 16;
+         int sizeY2 = 16;
 
          int xQ = 4;
          int yQ = 4;
 
+         int xQ2 = 4;
+         int yQ2 = 4;
+
          bool stop = false;
+         bool stop2 = false;
 
          int amount = 0;
+         int amount2 = 0;
 
-         //Thread thread = new Thread(() => { amount = Print(sizeX, sizeY, xQ, yQ, stop, amount); });
-         //Thread thread2 = new Thread(() => { amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount); });
-        //thread.Start();
-         //thread2.Start();
-
-         amount = Print2(sizeX, sizeY, xQ, yQ, stop, amount);
-         amount = Print(sizeX, sizeY, xQ, yQ, stop, amount);
+         Thread thread = new Thread(() => { stop = Print(sizeX, sizeY, xQ, yQ, stop, amount); });
+         Thread thread2 = new Thread(() => { stop2 = Print2(sizeX2, sizeY2, xQ2, yQ2, stop2, amount2); });
+         thread.Start();
+         thread2.Start();
+         for (int i = 0; i < 1; i++)
+         {
+            if (stop && stop2)
+            {
+               Console.Clear();
+               break;
+            }
+            PrintMap(sizeX, sizeY);
+            Console.SetCursorPosition(xQ, yQ);
+            Console.Write("O");
+         }
+         /*stop = Print(sizeX, sizeY, xQ, yQ, stop, amount);
+         stop2 = Print2(sizeX, sizeY, xQ, yQ, stop, amount);*/
 
          Console.WriteLine(amount);
       }
 
-      static int Print(int sizeX, int sizeY, int xQ, int yQ, bool stop, int amount)
+      static void PrintMap(int sizeX, int sizeY)
       {
-         bool death = false;
-
-         for (int i = 0; i < sizeY/2; i++)
+         for (int c = 1; c < sizeX; c++)
          {
-            for (int j = 0; j < sizeX; j++)
-            {
-               Console.SetCursorPosition(j, i);
-               Console.Write("X");
-               if (!death)
-               {
-                  Console.SetCursorPosition(xQ, yQ);
-                  Console.Write("O");
-               }
-               else
-               {
-                  Console.SetCursorPosition(xQ, yQ);
-                  Console.Write("0");
-               }
-
-               if (j == xQ && i == yQ)
-               {
-                  death = true;
-                  Console.Write("0");
-                  amount++;
-               }
-               else
-                  Thread.Sleep(100);
-               Console.Clear();
-            }
+            Console.SetCursorPosition(c, 0);
+            Console.Write("_");
          }
-         /*Console.WriteLine(amount);*/
-         return amount;
+         for (int c = 1; c < sizeY / 2; c++)
+         {
+            Console.SetCursorPosition(0, c);
+            Console.Write("|");
+         }
+         for (int c = sizeX / 2 - 1; c > 0; c--)
+         {
+            Console.SetCursorPosition(sizeX, c);
+            Console.Write("|");
+         }
+         ///////////////////////////////////////////////
+         for (int c = sizeX - 1; c > sizeX / 2 - 1; c--)
+         {
+            Console.SetCursorPosition(0, c);
+            Console.Write("|");
+         }
+         for (int c = sizeY - 1; c > sizeY / 2 - 1; c--)
+         {
+            Console.SetCursorPosition(sizeX, c);
+            Console.Write("|");
+         }
+         for (int c = sizeX - 1; c > 0; c--)
+         {
+            Console.SetCursorPosition(c, sizeX);
+            Console.Write("—");
+         }
+
       }
 
-      static int Print2(int sizeX, int sizeY, int xQ, int yQ, bool stop, int amount)
+      static bool Print(int sizeX, int sizeY, int xQ, int yQ, bool stop, int amount)
       {
-         bool death = false;
-
-         for (int i = sizeY - 1; i > sizeY/2-1; i--)
+         for (int i = 1; i < sizeY/2; i++)
          {
-            for (int j = sizeX - 1; j > -1; j--)
+            for (int j = 1; j < sizeX; j++)
             {
                Console.SetCursorPosition(j, i);
                Console.Write("X");
-               /*if (!death)
-               {
-                  Console.SetCursorPosition(xQ, yQ);
-                  Console.Write("O");
-               }
-               else
-               {
-                  Console.SetCursorPosition(xQ, yQ);
-                  Console.Write("0");
-               }*/
 
                if (j == xQ && i == yQ)
                {
-                  death = true;
-                  Console.Write("0");
                   amount++;
                }
                else
                   Thread.Sleep(100);
-               Console.Clear();
+               Console.SetCursorPosition(j, i);
+               Console.Write(" ");
             }
          }
-        /* Console.WriteLine(amount);*/
-         return amount;
+         return stop = true;
+      }
+
+      static bool Print2(int sizeX2, int sizeY2, int xQ2, int yQ2, bool stop2, int amount2)
+      {
+         for (int i = sizeY2 - 1; i > sizeY2/2-1; i--)
+         {
+            for (int j = sizeX2 - 1; j > 0; j--)
+            {
+               Console.SetCursorPosition(j, i);
+               Console.Write("X");
+
+               if (j == xQ2 && i == yQ2)
+               {
+                  amount2++;
+               }
+               else
+                  Thread.Sleep(100);
+               Console.SetCursorPosition(j, i);
+               Console.Write(" ");
+            }
+         }
+         return stop2 = true;
       }
    }
 }
