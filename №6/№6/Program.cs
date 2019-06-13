@@ -9,43 +9,40 @@ namespace _6
 {
    class Program
    {
-   static void Main(string[] args)
+      public static int amount = 0;
+
+      static void Main(string[] args)
       {
          Console.CursorVisible = false;
 
          int sizeX = 16;
          int sizeY = 16;
 
-         int sizeX2 = 16;
-         int sizeY2 = 16;
-
-         int xQ = 4;
-         int yQ = 4;
-
-         int xQ2 = 4;
-         int yQ2 = 4;
+         int[] xQ = { 6, 4, 9 };
+         int[] yQ = { 1, 5, 10 };
 
          bool stop = false;
-         bool stop2 = false;
 
-         int amount = 0;
-         int amount2 = 0;
-
-         Thread thread = new Thread(() => { stop = Print(sizeX, sizeY, xQ, yQ, stop, amount); });
-         Thread thread2 = new Thread(() => { stop2 = Print2(sizeX2, sizeY2, xQ2, yQ2, stop2, amount2); });
+         Thread thread = new Thread(() => { Print(sizeX, sizeY, xQ, yQ, stop); });
+         Thread thread2 = new Thread(() => { Print2(sizeX, sizeY, xQ, yQ, stop); });
          thread.Start();
          thread2.Start();
-         for (int i = 0; i < 1; i++)
+
+         for (int q = 0; q < 1; q++)
          {
-            if (stop && stop2)
+            if (stop)
             {
                Console.Clear();
                break;
             }
             PrintMap(sizeX, sizeY);
-            Console.SetCursorPosition(xQ, yQ);
-            Console.Write("O");
+            for (int i = 0; i < xQ.Length; i++)
+            {
+               Console.SetCursorPosition(xQ[i], yQ[i]);
+               Console.Write("O");
+            }
          }
+
          /*stop = Print(sizeX, sizeY, xQ, yQ, stop, amount);
          stop2 = Print2(sizeX, sizeY, xQ, yQ, stop, amount);*/
 
@@ -85,10 +82,9 @@ namespace _6
             Console.SetCursorPosition(c, sizeX);
             Console.Write("—");
          }
-
       }
 
-      static bool Print(int sizeX, int sizeY, int xQ, int yQ, bool stop, int amount)
+      static void Print(int sizeX, int sizeY, int[] xQ, int[] yQ, bool stop)
       {
          for (int i = 1; i < sizeY/2; i++)
          {
@@ -97,39 +93,45 @@ namespace _6
                Console.SetCursorPosition(j, i);
                Console.Write("X");
 
-               if (j == xQ && i == yQ)
-               {
-                  amount++;
-               }
-               else
-                  Thread.Sleep(100);
-               Console.SetCursorPosition(j, i);
-               Console.Write(" ");
+               for (int q = 0; q < xQ.Length; q++)
+                  if (j == xQ[q] && i == yQ[q])
+                  {
+                     amount++;
+                  }
+
+                  Thread.Sleep(70);
+                  Console.SetCursorPosition(j, i);
+                  Console.Write(" ");
+               
+               //Console.ReadKey();
             }
          }
-         return stop = true;
       }
 
-      static bool Print2(int sizeX2, int sizeY2, int xQ2, int yQ2, bool stop2, int amount2)
+      static void Print2(int sizeX, int sizeY, int[] xQ, int[] yQ, bool stop)
       {
-         for (int i = sizeY2 - 1; i > sizeY2/2-1; i--)
+         for (int x = sizeY - 1; x > sizeY/2-1; x--)
          {
-            for (int j = sizeX2 - 1; j > 0; j--)
+            for (int z = sizeX - 1; z > 0; z--)
             {
-               Console.SetCursorPosition(j, i);
+               Console.SetCursorPosition(z, x);
                Console.Write("X");
 
-               if (j == xQ2 && i == yQ2)
-               {
-                  amount2++;
-               }
-               else
-                  Thread.Sleep(100);
-               Console.SetCursorPosition(j, i);
-               Console.Write(" ");
+               for (int i = 0; i < xQ.Length; i++)
+                  if (z == xQ[i] && x == yQ[i])
+                  {
+                     amount++;
+                  }
+
+                  Thread.Sleep(150);
+                  Console.SetCursorPosition(z, x);
+                  Console.Write(" ");
+               
+               //Console.ReadKey();
             }
          }
-         return stop2 = true;
+         Console.Clear();
+         Console.WriteLine("Обнаружено целей на карте: " + amount);
       }
    }
 }
