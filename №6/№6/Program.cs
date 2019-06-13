@@ -15,27 +15,20 @@ namespace _6
       {
          Console.CursorVisible = false;
 
-         int sizeX = 16;
+         int sizeX = 16;   //Размер карты
          int sizeY = 16;
 
-         int[] xQ = { 6, 4, 9 };
+         int[] xQ = { 6, 4, 9 }; //Координаты целец
          int[] yQ = { 1, 5, 10 };
 
-         bool stop = false;
-
-         Thread thread = new Thread(() => { Print(sizeX, sizeY, xQ, yQ, stop); });
-         Thread thread2 = new Thread(() => { Print2(sizeX, sizeY, xQ, yQ, stop); });
+         Thread thread = new Thread(() => { Print(sizeX, sizeY, xQ, yQ); });  //Запуск разведчиков
+         Thread thread2 = new Thread(() => { Print2(sizeX, sizeY, xQ, yQ); });
          thread.Start();
          thread2.Start();
 
          for (int q = 0; q < 1; q++)
          {
-            if (stop)
-            {
-               Console.Clear();
-               break;
-            }
-            PrintMap(sizeX, sizeY);
+            PrintMap(sizeX, sizeY); //Отрисовка карты с целями
             for (int i = 0; i < xQ.Length; i++)
             {
                Console.SetCursorPosition(xQ[i], yQ[i]);
@@ -79,7 +72,7 @@ namespace _6
          }
       }
 
-      static void Print(int sizeX, int sizeY, int[] xQ, int[] yQ, bool stop)
+      static void Print(int sizeX, int sizeY, int[] xQ, int[] yQ)
       {
          for (int i = 1; i < sizeY/2; i++)
          {
@@ -101,7 +94,7 @@ namespace _6
          }
       }
 
-      static void Print2(int sizeX, int sizeY, int[] xQ, int[] yQ, bool stop)
+      static void Print2(int sizeX, int sizeY, int[] xQ, int[] yQ)
       {
          for (int x = sizeY - 1; x > sizeY/2-1; x--)
          {
