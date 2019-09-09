@@ -28,9 +28,9 @@ namespace _1
          {
             finish += Convert.ToInt32(Convert.ToString(start[index]))*Math.Pow(2,i);
             index++;
-         }
+         } 
 
-         Console.WriteLine("Ваш результат сохраненый в файл 'output.txt' - " + finish + "\n");
+         Console.WriteLine("Ваш результат сохраненный в файл 'output.txt' - " + finish + "\n");
 
          using (StreamWriter SW = new StreamWriter(@"E:\1Programming test\2 course\output.txt"))
             SW.Write(finish);
