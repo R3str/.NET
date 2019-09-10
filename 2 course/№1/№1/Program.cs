@@ -27,10 +27,10 @@ namespace _1
             Console.WriteLine("\nВы ввели некорректное число! Попробуйте еще раз");
             Environment.Exit(0);
          }
-// Проверка на корректность вводимого числа (отсутствие букв)
+// Проверка на корректность вводимого числа (отсутствие букв и недопустимых цифр)
          for(int i = 0; i < start[0].Length; i++)
          {
-            if (Char.IsLetter(start[0][i]))
+            if (Char.IsLetter(start[0][i]) || start[0][i] != '1' && start[0][i] != '0')
             {
                Console.WriteLine("\nВы ввели некорректное число! Попробуйте еще раз");
                Environment.Exit(0);
