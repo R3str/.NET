@@ -54,7 +54,7 @@ namespace _1
             start[1] = null;
          }
 
-         Console.WriteLine("\n\nВаше число записаное в файле 'input.txt' - " + start[0]);
+         Console.WriteLine("\n\nВаше число записанное в файле 'input.txt' - " + start[0]);
 // Разделение по 4 разряда
          for (int i = 0; i < start[0].Length; i++)
          {
