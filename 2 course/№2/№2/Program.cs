@@ -85,8 +85,15 @@ namespace _2
 
             char[] reverseString = start[0].ToCharArray();
             Array.Reverse(reverseString);
-            Console.WriteLine(reverseString);
+            Console.Write("\nРезультат вычисления: ");
+            Console.Write(reverseString);
+            Console.WriteLine();
 
+            using (StreamWriter SW = new StreamWriter(@"E:\_Programming test\2 course\output.txt"))
+            {
+                SW.WriteLine(reverseString);
+                SW.Close();
+            }
         }
 
         static bool Check(string s1)
