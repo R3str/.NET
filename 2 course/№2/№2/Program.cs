@@ -24,13 +24,7 @@ namespace _2
             // Приветствие
             Console.WriteLine("Вы запустили программу для вычитания двух чисел (каждое из которых не должно превышать 16-ую степень разрядности)." +
                 "\nВаши числа: " + start[0] + " и " + start[1]);
-            // Проверка на соответствие разрядности
-            if (start[0].Length > 16 || start[1].Length > 16)
-            {
-                Console.WriteLine("\nВы ввели некорректное число! Попробуйте еще раз");
-                Environment.Exit(0);
-            }
-            // Проверка на корректность вводимого числа (отсутствие букв и недопустимых цифр)
+            // Проверка на соответствие разрядности и корректность вводимого числа (отсутствие букв и недопустимых цифр)
             Check(start[0]);
             Check(start[1]);
             // Добавление нехватающих нулей для равной разрядности обеих чисел
@@ -82,34 +76,36 @@ namespace _2
 
                 start[0] += num;
             }
-
+            // Переворот числа, так как запись была инвертированной
             char[] reverseString = start[0].ToCharArray();
             Array.Reverse(reverseString);
             Console.Write("\nРезультат вычисления: ");
             Console.Write(reverseString);
             Console.WriteLine();
-
+            // Запись результата в файл
             using (StreamWriter SW = new StreamWriter(@"E:\_Programming test\2 course\output.txt"))
             {
                 SW.WriteLine(reverseString);
                 SW.Close();
             }
         }
-
-        static bool Check(string s1)
+        // Метод для проверки соответствия разрядности и корректности вводимого числа (отсутствие букв и недопустимых цифр)
+        static void Check(string s1)
         {
-            bool check = true;
+            if (s1.Length > 16)
+            {
+                Console.WriteLine("\nВы ввели слишком большое число! Попробуйте еще раз");
+                Environment.Exit(0);
+            }
 
             for (int i = 0; i < s1.Length; i++)
             {
-                if (s1[i] != '.' && s1[i] != ',' && s1[i] != '1' && s1[i] != '0')
+                if (s1[i] != '1' && s1[i] != '0')
                 {
                     Console.WriteLine("\nВы ввели некорректное число! Попробуйте еще раз");
                     Environment.Exit(0);
                 }
             }
-
-            return check;
         }
     }
 }
