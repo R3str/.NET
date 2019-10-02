@@ -45,7 +45,8 @@ namespace _2
             // Добавление всего остального числа начиная от запятой
                 for (int i = 0; i < start[1].Length; i++)
                 {
-                    i += 2;
+                    if (comma)
+                        i += 2;
                     change[1] += start[1][i];
                 }
                 change[0] = start[0];
