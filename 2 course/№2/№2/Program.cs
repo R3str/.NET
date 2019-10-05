@@ -46,7 +46,10 @@ namespace _2
                 for (int i = 0; i < start[1].Length; i++)
                 {
                     if (comma)
+                    {
+                        comma = false;
                         i += 2;
+                    }
                     change[1] += start[1][i];
                 }
                 change[0] = start[0];
@@ -67,7 +70,10 @@ namespace _2
                 for (int i = 0; i < start[0].Length; i++)
                 {
                     if (comma)
+                    {
+                        comma = false;
                         i += 2;
+                    }
                     change[0] += start[0][i];
                 }
                 change[1] = start[1];
@@ -79,10 +85,10 @@ namespace _2
                 change[1] = start[1];
             }
 
-        // Действие над числами
+        // Определение отрицательного числа и перевод в обратный код
             count = change[0].Length;
             start[0] = null;
-        // Определение отрицательного и перевод в обратный код
+
             if (change[0][0] == '1')
             {
                 char[] charStr = change[0].ToCharArray();
@@ -129,6 +135,7 @@ namespace _2
             }
         // Сумма двух чисел
             start[0] = Action(count, change[0], change[1], additCode);
+
 
             Console.Write("\nРезультат вычисления: ");
             Console.Write(start[0]);
