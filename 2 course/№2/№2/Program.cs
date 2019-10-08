@@ -84,8 +84,21 @@ namespace _2
                 change[0] = start[0];
                 change[1] = start[1];
             }
+            // Смена знака на противоположный из-за начального условия вычитания
+            char[] charStr0 = change[1].ToCharArray();
+            if (change[1][0] == '1')
+                charStr0[0] = '0';
 
-        // Определение отрицательного числа и перевод в обратный код
+            else
+                charStr0[0] = '1';
+            
+            for (int i = 1; i < count; i++)
+                    charStr0[i] = change[1][i];
+
+            change[1] = new string(charStr0);
+            
+
+            // Определение отрицательного числа и перевод в обратный код
             count = change[0].Length;
             start[0] = null;
 
