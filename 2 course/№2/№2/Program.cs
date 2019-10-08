@@ -134,11 +134,10 @@ namespace _2
                 additCode[1] = false;
             }
         // Сумма двух чисел
-            start[0] = Action(count, change[0], change[1], additCode);
-
+            change[0] = Action(count, change[0], change[1], additCode);
 
             Console.Write("\nРезультат вычисления: ");
-            Console.Write(start[0]);
+            Console.Write(change[0]);
             Console.WriteLine();
         // Запись результата в файл
             using (StreamWriter SW = new StreamWriter(@"E:\_Programming test\2 course\output.txt"))
